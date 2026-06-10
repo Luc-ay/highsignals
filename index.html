@@ -1,0 +1,1605 @@
+Here is the updated HTML document with the hyphenation removed for a more natural, human-readable flow.
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>HighSignals — Create With Intent</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0a192f;
+  --navy-mid: #0d2040;
+  --navy-light: #112650;
+  --gold: #d4af37;
+  --gold-bright: #e8c84a;
+  --gold-dim: rgba(212,175,55,0.12);
+  --gold-border: rgba(212,175,55,0.22);
+  --white: #ffffff;
+  --off-white: rgba(255,255,255,0.90);
+  --muted: rgba(255,255,255,0.50);
+  --subtle: rgba(255,255,255,0.10);
+  --font-display: 'Bebas Neue', 'Arial Black', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--navy);
+  color: var(--off-white);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* GRAIN */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ══════════════════════════════
+   NAV
+══════════════════════════════ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 500;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 56px;
+  background: rgba(10,25,47,0.85);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--gold-border);
+  transition: background 0.3s;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+.nav-logo img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 6px;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 0.3px;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-cta {
+  background: var(--gold);
+  color: var(--navy);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.4px;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+.nav-cta:hover { background: var(--gold-bright); transform: translateY(-1px); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--off-white); border-radius: 2px; transition: all 0.3s; }
+
+/* ══════════════════════════════
+   HERO
+══════════════════════════════ */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 130px 56px 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(212,175,55,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212,175,55,0.035) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse 85% 85% at 50% 45%, black 30%, transparent 100%);
+}
+.hero-glow-top {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 600px;
+  background: radial-gradient(ellipse, rgba(212,175,55,0.07) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--gold-dim);
+  border: 1px solid var(--gold-border);
+  border-radius: 100px;
+  padding: 7px 16px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 32px;
+}
+.hero-pill-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+.hero-headline {
+  font-family: var(--font-display);
+  font-size: clamp(64px, 10vw, 120px);
+  letter-spacing: 4px;
+  line-height: 0.95;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.hero-headline .gold { color: var(--gold); }
+.hero-sub-headline {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 5vw, 56px);
+  letter-spacing: 3px;
+  line-height: 1;
+  color: var(--muted);
+  margin-bottom: 32px;
+}
+.hero-body {
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--muted);
+  max-width: 560px;
+  line-height: 1.8;
+  margin-bottom: 48px;
+}
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 80px;
+}
+.btn-gold {
+  background: var(--gold);
+  color: var(--navy);
+  font-size: 15px;
+  font-weight: 600;
+  padding: 16px 36px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s;
+  letter-spacing: 0.3px;
+  display: inline-block;
+}
+.btn-gold:hover { background: var(--gold-bright); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(212,175,55,0.3); }
+.btn-outline {
+  background: transparent;
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 400;
+  padding: 16px 28px;
+  border-radius: 5px;
+  border: 1px solid var(--subtle);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s;
+  letter-spacing: 0.3px;
+  display: inline-block;
+}
+.btn-outline:hover { color: var(--white); border-color: rgba(255,255,255,0.3); }
+.hero-stats {
+  display: flex;
+  gap: 60px;
+  justify-content: center;
+  padding-top: 48px;
+  border-top: 1px solid var(--subtle);
+  position: relative;
+  z-index: 1;
+  flex-wrap: wrap;
+}
+.hero-stat-n {
+  font-family: var(--font-display);
+  font-size: 42px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  line-height: 1;
+}
+.hero-stat-l {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 4px;
+  letter-spacing: 0.5px;
+}
+
+/* ══════════════════════════════
+   VIDEO WELCOME
+══════════════════════════════ */
+#video-section {
+  background: var(--navy-mid);
+  border-top: 1px solid var(--gold-border);
+  border-bottom: 1px solid var(--gold-border);
+  padding: 96px 56px;
+}
+.video-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.video-text .eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+.video-text h2 {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5vw, 64px);
+  letter-spacing: 2px;
+  line-height: 0.95;
+  color: var(--white);
+  margin-bottom: 20px;
+}
+.video-text h2 span { color: var(--gold); }
+.video-text p {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.8;
+}
+.video-player-wrap {
+  position: relative;
+  padding-bottom: 56.25%;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--gold-border);
+  background: var(--navy-light);
+  box-shadow: 0 40px 80px rgba(0,0,0,0.4);
+}
+.video-player-wrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.video-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: var(--navy-light);
+  cursor: pointer;
+  z-index: 2;
+}
+.video-play-btn {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+.video-play-btn:hover { transform: scale(1.08); }
+.video-play-btn svg { width: 28px; height: 28px; margin-left: 4px; }
+.video-label {
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 0.5px;
+}
+
+/* ══════════════════════════════
+   MARQUEE
+══════════════════════════════ */
+.marquee-strip {
+  background: var(--gold);
+  padding: 13px 0;
+  overflow: hidden;
+}
+.marquee-track {
+  display: flex;
+  animation: marquee 28s linear infinite;
+  white-space: nowrap;
+}
+.m-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0 28px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--navy);
+}
+.m-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(10,25,47,0.35); flex-shrink: 0; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ══════════════════════════════
+   ECOSYSTEM
+══════════════════════════════ */
+#ecosystem {
+  padding: 120px 56px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.eco-header {
+  text-align: center;
+  margin-bottom: 72px;
+}
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.section-h {
+  font-family: var(--font-display);
+  font-size: clamp(42px, 6vw, 72px);
+  letter-spacing: 3px;
+  line-height: 0.95;
+  color: var(--white);
+}
+.section-h .gold { color: var(--gold); }
+.section-p {
+  font-size: 17px;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.8;
+  max-width: 500px;
+  margin: 16px auto 0;
+}
+.eco-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.eco-card {
+  background: var(--navy-mid);
+  border: 1px solid var(--subtle);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.35s ease;
+  display: flex;
+  flex-direction: column;
+}
+.eco-card:hover {
+  border-color: var(--gold-border);
+  transform: translateY(-6px);
+  box-shadow: 0 32px 64px rgba(0,0,0,0.4);
+}
+.eco-card-top {
+  padding: 40px 36px 32px;
+  flex: 1;
+}
+.eco-num {
+  font-family: var(--font-display);
+  font-size: 80px;
+  letter-spacing: -2px;
+  line-height: 0.85;
+  color: var(--gold-border);
+  margin-bottom: 20px;
+  transition: color 0.35s;
+}
+.eco-card:hover .eco-num { color: rgba(212,175,55,0.35); }
+.eco-icon {
+  width: 52px; height: 52px;
+  background: var(--gold-dim);
+  border: 1px solid var(--gold-border);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+  margin-bottom: 24px;
+}
+.eco-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+.eco-title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  letter-spacing: 1px;
+  color: var(--white);
+  margin-bottom: 14px;
+  line-height: 1.1;
+}
+.eco-desc {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.8;
+}
+.eco-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 36px 24px;
+}
+.eco-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: var(--gold-dim);
+  border: 1px solid var(--gold-border);
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+.eco-card-foot {
+  padding: 20px 36px 36px;
+  border-top: 1px solid var(--subtle);
+  margin-top: auto;
+}
+.eco-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--gold);
+  text-decoration: none;
+  transition: gap 0.2s;
+}
+.eco-link:hover { gap: 14px; }
+.eco-link svg { width: 16px; height: 16px; }
+
+/* ══════════════════════════════
+   APP DEEP DIVE
+══════════════════════════════ */
+#app-section {
+  background: var(--navy-mid);
+  border-top: 1px solid var(--gold-border);
+  border-bottom: 1px solid var(--gold-border);
+  padding: 120px 56px;
+  overflow: hidden;
+}
+.app-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.app-phones {
+  display: flex;
+  justify-content: center;
+  gap: -20px;
+  position: relative;
+}
+.phone {
+  width: 220px;
+  height: 440px;
+  border-radius: 36px;
+  border: 1px solid var(--gold-border);
+  background: var(--navy-light);
+  overflow: hidden;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+  position: relative;
+  flex-shrink: 0;
+}
+.phone-2 {
+  margin-top: 40px;
+  margin-left: -28px;
+  opacity: 0.7;
+  filter: brightness(0.8);
+}
+.phone-notch {
+  position: absolute;
+  top: 12px; left: 50%;
+  transform: translateX(-50%);
+  width: 80px; height: 24px;
+  background: var(--navy);
+  border-radius: 12px;
+  z-index: 2;
+}
+.phone-body {
+  position: absolute;
+  inset: 0;
+  padding: 50px 14px 18px;
+}
+.p-greeting { font-size: 10px; color: var(--muted); }
+.p-name { font-family: var(--font-display); font-size: 18px; letter-spacing: 1px; color: var(--white); margin-bottom: 14px; }
+.p-card-gold {
+  background: var(--gold);
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 8px;
+}
+.p-card-gold .p-cl { font-size: 10px; color: rgba(10,25,47,0.65); font-weight: 600; margin-bottom: 3px; }
+.p-card-gold .p-ct { font-size: 13px; font-weight: 700; color: var(--navy); }
+.p-row { display: flex; gap: 8px; margin-bottom: 12px; }
+.p-mini {
+  flex: 1;
+  background: rgba(255,255,255,0.04);
+  border-radius: 12px;
+  padding: 12px 10px;
+  border: 1px solid var(--gold-border);
+}
+.p-mini .p-ml { font-size: 9px; color: var(--gold); font-weight: 600; margin-bottom: 3px; }
+.p-mini .p-mv { font-size: 14px; font-weight: 700; color: var(--white); }
+.p-section-title { font-size: 10px; font-weight: 600; color: var(--white); margin-bottom: 6px; }
+.p-post {
+  background: rgba(255,255,255,0.04);
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.p-post-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+.p-post-text { font-size: 9px; color: var(--off-white); flex: 1; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.p-post-val { font-size: 9px; font-weight: 600; color: var(--gold); }
+
+/* phone 2 — analytics */
+.p2-header { font-size: 10px; font-weight: 600; color: var(--white); margin-bottom: 12px; margin-top: 4px; }
+.p2-bars { display: flex; align-items: flex-end; gap: 6px; height: 70px; margin-bottom: 8px; }
+.p2-bar { flex: 1; background: var(--gold-dim); border-radius: 3px 3px 0 0; border: 1px solid var(--gold-border); }
+.p2-bar.a { background: var(--gold); border-color: var(--gold); }
+.p2-days { display: flex; gap: 6px; margin-bottom: 12px; }
+.p2-day { flex: 1; font-size: 8px; color: var(--muted); text-align: center; }
+.p2-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.p2-stat { background: rgba(255,255,255,0.04); border-radius: 8px; padding: 8px; border: 1px solid var(--subtle); }
+.p2-stat-n { font-size: 15px; font-weight: 700; color: var(--gold); }
+.p2-stat-l { font-size: 8px; color: var(--muted); margin-top: 1px; }
+
+.app-text .eyebrow { margin-bottom: 16px; }
+.app-text h2 {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5vw, 68px);
+  letter-spacing: 2px;
+  line-height: 0.95;
+  color: var(--white);
+  margin-bottom: 20px;
+}
+.app-text h2 span { color: var(--gold); }
+.app-text p { font-size: 15px; font-weight: 300; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+.app-features { list-style: none; margin: 28px 0; display: flex; flex-direction: column; gap: 14px; }
+.app-feat {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 20px;
+  background: rgba(212,175,55,0.06);
+  border: 1px solid var(--gold-border);
+  border-radius: 10px;
+}
+.app-feat-icon {
+  width: 36px; height: 36px;
+  background: var(--gold-dim);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.app-feat-title { font-size: 14px; font-weight: 600; color: var(--white); margin-bottom: 3px; }
+.app-feat-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+/* AI AUDITOR CALLOUT */
+.ai-callout {
+  background: linear-gradient(135deg, var(--navy-light), var(--navy-mid));
+  border: 1px solid var(--gold-border);
+  border-radius: 16px;
+  padding: 28px 24px;
+  margin-top: 8px;
+}
+.ai-callout-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.ai-badge {
+  background: var(--gold);
+  color: var(--navy);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+.ai-callout-title { font-size: 15px; font-weight: 600; color: var(--white); }
+.ai-callout-body { font-size: 13px; color: var(--muted); line-height: 1.7; }
+.ai-callout-body strong { color: var(--gold); font-weight: 500; }
+
+/* ══════════════════════════════
+   COMMUNITY + ACADEMY ROWS
+══════════════════════════════ */
+.two-up {
+  padding: 120px 56px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 96px;
+}
+.feature-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.feature-row.reverse { direction: rtl; }
+.feature-row.reverse > * { direction: ltr; }
+.feature-visual {
+  background: var(--navy-mid);
+  border: 1px solid var(--subtle);
+  border-radius: 20px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  position: relative;
+}
+.feature-visual-inner { width: 100%; padding: 32px; }
+
+.community-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.community-member {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--subtle);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.member-avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy);
+  flex-shrink: 0;
+}
+.member-name { font-size: 12px; font-weight: 600; color: var(--white); }
+.member-role { font-size: 10px; color: var(--muted); margin-top: 2px; }
+.community-banner {
+  margin-top: 10px;
+  background: var(--gold-dim);
+  border: 1px solid var(--gold-border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.community-banner-text { font-size: 12px; font-weight: 600; color: var(--gold); }
+.community-count { font-family: var(--font-display); font-size: 22px; letter-spacing: 1px; color: var(--gold); }
+
+.curriculum-list { display: flex; flex-direction: column; gap: 8px; }
+.curriculum-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 8px;
+  border: 1px solid var(--subtle);
+  transition: all 0.2s;
+}
+.curriculum-item:hover { background: var(--gold-dim); border-color: var(--gold-border); }
+.curriculum-num {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--gold);
+  width: 20px;
+  flex-shrink: 0;
+}
+.curriculum-name { font-size: 13px; font-weight: 500; color: var(--off-white); }
+.curriculum-check {
+  margin-left: auto;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--gold-dim);
+  border: 1px solid var(--gold-border);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.curriculum-check svg { width: 10px; height: 10px; }
+
+.feature-text .eyebrow { margin-bottom: 16px; }
+.feature-text h2 {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 4.5vw, 60px);
+  letter-spacing: 2px;
+  line-height: 0.95;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+.feature-text h2 span { color: var(--gold); }
+.feature-text p { font-size: 15px; font-weight: 300; color: var(--muted); line-height: 1.85; margin-bottom: 14px; }
+.feature-list { list-style: none; margin: 20px 0 32px; display: flex; flex-direction: column; gap: 10px; }
+.feature-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.feature-list li::before {
+  content: '';
+  width: 14px; height: 14px;
+  background: var(--gold-dim);
+  border: 1px solid var(--gold-border);
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 3px;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 7l2.5 2.5L11 4.5' stroke='%23d4af37' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-size: cover;
+}
+
+/* ══════════════════════════════
+   ABOUT / FOUNDER
+══════════════════════════════ */
+#about-founder {
+  background: var(--navy-mid);
+  border-top: 1px solid var(--gold-border);
+  border-bottom: 1px solid var(--gold-border);
+  padding: 120px 56px;
+}
+.founder-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.founder-photo-wrap {
+  position: relative;
+}
+.founder-photo {
+  width: 100%;
+  aspect-ratio: 3/4;
+  border-radius: 20px;
+  background: var(--navy-light);
+  border: 1px solid var(--gold-border);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.founder-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.founder-gold-tag {
+  position: absolute;
+  bottom: -16px;
+  left: 24px;
+  background: var(--gold);
+  color: var(--navy);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+}
+.founder-text h2 {
+  font-family: var(--font-display);
+  font-size: clamp(42px, 5vw, 68px);
+  letter-spacing: 2px;
+  line-height: 0.95;
+  color: var(--white);
+  margin-bottom: 24px;
+  margin-top: 24px;
+}
+.founder-text h2 span { color: var(--gold); }
+.founder-text p {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.9;
+  margin-bottom: 16px;
+}
+.founder-quote {
+  border-left: 3px solid var(--gold);
+  padding-left: 24px;
+  margin: 32px 0;
+}
+.founder-quote-text {
+  font-size: 18px;
+  font-style: italic;
+  color: var(--off-white);
+  line-height: 1.6;
+  font-weight: 300;
+}
+.founder-quote-attr {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+
+/* ══════════════════════════════
+   WAITLIST
+══════════════════════════════ */
+#waitlist {
+  padding: 120px 56px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.waitlist-card {
+  background: linear-gradient(140deg, var(--navy-mid) 0%, var(--navy-light) 100%);
+  border: 1px solid var(--gold-border);
+  border-radius: 28px;
+  padding: 96px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.waitlist-card::before {
+  content: '';
+  position: absolute;
+  top: -120px; left: 50%;
+  transform: translateX(-50%);
+  width: 500px; height: 400px;
+  background: radial-gradient(ellipse, rgba(212,175,55,0.1), transparent 70%);
+  pointer-events: none;
+}
+.waitlist-content { position: relative; z-index: 1; }
+.waitlist-title {
+  font-family: var(--font-display);
+  font-size: clamp(52px, 7vw, 88px);
+  letter-spacing: 4px;
+  line-height: 0.95;
+  color: var(--white);
+  margin-bottom: 20px;
+}
+.waitlist-title .gold { color: var(--gold); }
+.waitlist-sub {
+  font-size: 17px;
+  font-weight: 300;
+  color: var(--muted);
+  max-width: 480px;
+  margin: 0 auto 52px;
+  line-height: 1.8;
+}
+.waitlist-form {
+  max-width: 540px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.wl-input, .wl-select {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--subtle);
+  border-radius: 6px;
+  padding: 14px 18px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--white);
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+.wl-input::placeholder { color: rgba(255,255,255,0.3); }
+.wl-input:focus, .wl-select:focus { border-color: var(--gold); }
+.wl-select { color: rgba(255,255,255,0.6); background-color: #0d2040; cursor: pointer; }
+.wl-select option { background: #0a192f; color: var(--white); }
+.wl-submit {
+  background: var(--gold);
+  color: var(--navy);
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 600;
+  padding: 17px 40px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.4px;
+  transition: all 0.25s;
+  margin-top: 4px;
+}
+.wl-submit:hover { background: var(--gold-bright); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(212,175,55,0.3); }
+.wl-note {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 0.5px;
+  margin-top: 12px;
+}
+.success-msg {
+  display: none;
+  padding: 20px 32px;
+  background: rgba(74,222,128,0.1);
+  border: 1px solid rgba(74,222,128,0.3);
+  border-radius: 10px;
+  font-size: 15px;
+  color: #4ade80;
+  letter-spacing: 0.3px;
+}
+
+/* ══════════════════════════════
+   FOOTER
+══════════════════════════════ */
+footer {
+  border-top: 1px solid var(--subtle);
+  padding: 48px 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 24px;
+  letter-spacing: 2px;
+  color: var(--gold);
+}
+.footer-copy { font-size: 13px; color: var(--muted); }
+.footer-links { display: flex; gap: 28px; list-style: none; }
+.footer-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--white); }
+
+/* ══════════════════════════════
+   SCROLL REVEAL
+══════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+.reveal.up { opacity: 1; transform: none; }
+.reveal-d1 { transition-delay: 0.1s; }
+.reveal-d2 { transition-delay: 0.2s; }
+.reveal-d3 { transition-delay: 0.3s; }
+
+/* ══════════════════════════════
+   RESPONSIVE
+══════════════════════════════ */
+@media(max-width: 1024px) {
+  nav { padding: 0 28px; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  #hero, #video-section, #app-section, .two-up, #about-founder, #waitlist, #ecosystem { padding-left: 28px; padding-right: 28px; }
+  #ecosystem { padding: 80px 28px; }
+  .eco-grid { grid-template-columns: 1fr; }
+  .video-wrap, .app-inner, .feature-row, .founder-inner { grid-template-columns: 1fr; gap: 48px; }
+  .feature-row.reverse { direction: ltr; }
+  .app-phones { justify-content: center; }
+  .founder-inner { grid-template-columns: 1fr; }
+  .founder-photo-wrap { max-width: 320px; margin: 0 auto; }
+  .waitlist-card { padding: 60px 28px; }
+  .form-row { grid-template-columns: 1fr; }
+  footer { flex-direction: column; text-align: center; }
+}
+@media(max-width: 640px) {
+  .hero-stats { gap: 32px; }
+  .phone-2 { display: none; }
+  .waitlist-title { font-size: 52px; }
+  .waitlist-card { padding: 40px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="#" class="nav-logo">
+    <img src="images/logo.jpeg" alt="HighSignals Logo" style="height: 40px; width: auto;">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#about-founder">About</a></li>
+    <li><a href="#academies-section">Academies</a></li>
+  </ul>
+  <a href="https://tally.so/r/kdzByZ" class="nav-cta">Join the Waitlist</a>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow-top"></div>
+
+  <div class="hero-pill">
+    <span class="hero-pill-dot"></span>
+    Now Accepting Waitlist Applications
+  </div>
+
+  <h1 class="hero-headline">
+    <span class="gold">CREATE</span><br>WITH
+  </h1>
+  <p class="hero-sub-headline">INTENTION. GROW WITHOUT LIMITS.</p>
+
+  <p class="hero-body">
+    HighSignals is the creator ecosystem for those who refuse to post into the void, combining community, education, and cutting edge AI tools into one powerful platform.
+  </p>
+
+  <div class="hero-actions">
+    <a href="https://tally.so/r/kdzByZ" class="btn-gold">Join the Waitlist</a>
+    <a href="#ecosystem" class="btn-outline">Explore the Ecosystem</a>
+  </div>
+
+  <div class="hero-stats">
+    <div>
+      <div class="hero-stat-n">3</div>
+      <div class="hero-stat-l">Products. One Vision.</div>
+    </div>
+    <div>
+      <div class="hero-stat-n">∞</div>
+      <div class="hero-stat-l">Ideas. AI Powered.</div>
+    </div>
+    <div>
+      <div class="hero-stat-n">100%</div>
+      <div class="hero-stat-l">Built for Creators</div>
+    </div>
+    <div>
+      <div class="hero-stat-n">0</div>
+      <div class="hero-stat-l">Excuses to Not Start</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span class="m-item">Called to Create<span class="m-dot"></span></span>
+    <span class="m-item">Community<span class="m-dot"></span></span>
+    <span class="m-item">Academy<span class="m-dot"></span></span>
+    <span class="m-item">HighSignals App<span class="m-dot"></span></span>
+    <span class="m-item">AI Script Auditor<span class="m-dot"></span></span>
+    <span class="m-item">ICP Profiling<span class="m-dot"></span></span>
+    <span class="m-item">Content Calendar<span class="m-dot"></span></span>
+    <span class="m-item">Analytics<span class="m-dot"></span></span>
+    <span class="m-item">Personal Branding<span class="m-dot"></span></span>
+    <span class="m-item">Video Editing<span class="m-dot"></span></span>
+    <span class="m-item">Viral Scripting<span class="m-dot"></span></span>
+    <span class="m-item">Called to Create<span class="m-dot"></span></span>
+    <span class="m-item">Community<span class="m-dot"></span></span>
+    <span class="m-item">Academy<span class="m-dot"></span></span>
+    <span class="m-item">HighSignals App<span class="m-dot"></span></span>
+    <span class="m-item">AI Script Auditor<span class="m-dot"></span></span>
+    <span class="m-item">ICP Profiling<span class="m-dot"></span></span>
+    <span class="m-item">Content Calendar<span class="m-dot"></span></span>
+    <span class="m-item">Analytics<span class="m-dot"></span></span>
+    <span class="m-item">Personal Branding<span class="m-dot"></span></span>
+    <span class="m-item">Video Editing<span class="m-dot"></span></span>
+    <span class="m-item">Viral Scripting<span class="m-dot"></span></span>
+  </div>
+</div>
+
+<!-- FOUNDER WELCOME VIDEO -->
+<section id="video-section">
+  <div class="video-wrap reveal">
+    <div class="video-text">
+      <div class="eyebrow">A Message from the Founder</div>
+      <h2>HEAR THE <span>VISION</span> FIRSTHAND.</h2>
+      <p>Samuel shares the origin story of HighSignals, why it was built, who it was built for, and what it means to finally have a platform that puts creators first.</p>
+      <p style="margin-top: 12px;">Watch this before you scroll any further. It will change how you see content creation.</p>
+      <br>
+      <a href="https://tally.so/r/kdzByZ" class="btn-gold" style="margin-top: 8px;">Join the Movement</a>
+    </div>
+    <div class="video-player-wrap">
+      <div class="video-placeholder" id="videoPlaceholder" onclick="loadVideo()">
+        <div class="video-play-btn">
+          <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 5L22 14L8 23V5Z" fill="#0a192f"/>
+          </svg>
+        </div>
+        <span class="video-label">Watch Samuel's Welcome Message</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ECOSYSTEM OVERVIEW -->
+<section id="ecosystem">
+  <div class="eco-header reveal">
+    <div class="eyebrow">The HighSignals Ecosystem</div>
+    <h2 class="section-h">THREE PILLARS.<br><span class="gold">ONE MISSION.</span></h2>
+    <p class="section-p">Everything you need to go from aspiring creator to unstoppable force. Community, education, and technology working together.</p>
+  </div>
+
+  <div class="eco-grid">
+    <!-- Card 1: Community -->
+    <div class="eco-card reveal reveal-d1">
+      <div class="eco-card-top">
+        <div class="eco-num">01</div>
+        <div class="eco-icon">🤝</div>
+        <div class="eco-label">Community</div>
+        <div class="eco-title">CALLED TO CREATE</div>
+        <p class="eco-desc">A tight knit accountability group where creators stay inspired, consistent, and supported. Because no one was meant to build alone. Network, get your content reviewed, and stay accountable.</p>
+      </div>
+      <div class="eco-tags">
+        <span class="eco-tag">Accountability</span>
+        <span class="eco-tag">Networking</span>
+        <span class="eco-tag">Content Reviews</span>
+      </div>
+      <div class="eco-card-foot">
+        <a href="#community-section" class="eco-link">
+          Learn More
+          <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 2: Academy -->
+    <div class="eco-card reveal reveal-d2" id="academies-section">
+      <div class="eco-card-top">
+        <div class="eco-num">02</div>
+        <div class="eco-icon">🎓</div>
+        <div class="eco-label">Education</div>
+        <div class="eco-title">CALLED TO CREATE ACADEMY</div>
+        <p class="eco-desc">A comprehensive curriculum teaching content creation from A to Z. Mindset, personal branding, scripting, filming, video editing, and marketing. Everything under one roof.</p>
+      </div>
+      <div class="eco-tags">
+        <span class="eco-tag">Mindset</span>
+        <span class="eco-tag">Scripting</span>
+        <span class="eco-tag">Editing</span>
+        <span class="eco-tag">Marketing</span>
+      </div>
+      <div class="eco-card-foot">
+        <a href="#academy-section" class="eco-link">
+          Learn More
+          <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 3: App -->
+    <div class="eco-card reveal reveal-d3">
+      <div class="eco-card-top">
+        <div class="eco-num">03</div>
+        <div class="eco-icon">📱</div>
+        <div class="eco-label">Technology</div>
+        <div class="eco-title">HIGHSIGNALS APP</div>
+        <p class="eco-desc">A mobile first tool for ideation and scripting, with an AI that knows your audience. Capture ideas, write scripts on the go, and get them audited by an AI that knows what goes viral.</p>
+      </div>
+      <div class="eco-tags">
+        <span class="eco-tag">AI Auditor</span>
+        <span class="eco-tag">ICP Aware</span>
+        <span class="eco-tag">Analytics</span>
+      </div>
+      <div class="eco-card-foot">
+        <a href="#app-section" class="eco-link">
+          Learn More
+          <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY + ACADEMY DETAIL ROWS -->
+<div class="two-up">
+
+  <!-- COMMUNITY -->
+  <div class="feature-row reveal" id="community-section">
+    <div class="feature-visual">
+      <div class="feature-visual-inner">
+        <div class="community-grid">
+          <div class="community-member">
+            <div class="member-avatar" style="background:#d4af37;">A</div>
+            <div>
+              <div class="member-name">Amara K.</div>
+              <div class="member-role">Lifestyle Creator</div>
+            </div>
+          </div>
+          <div class="community-member">
+            <div class="member-avatar" style="background:#4ade80;">T</div>
+            <div>
+              <div class="member-name">Tobi F.</div>
+              <div class="member-role">Business Coach</div>
+            </div>
+          </div>
+          <div class="community-member">
+            <div class="member-avatar" style="background:#60a5fa;">C</div>
+            <div>
+              <div class="member-name">Chioma E.</div>
+              <div class="member-role">Tech Creator</div>
+            </div>
+          </div>
+          <div class="community-member">
+            <div class="member-avatar" style="background:#f97316;">D</div>
+            <div>
+              <div class="member-name">David M.</div>
+              <div class="member-role">Finance Creator</div>
+            </div>
+          </div>
+        </div>
+        <div class="community-banner">
+          <div>
+            <div class="community-banner-text">Creators and Counting</div>
+            <div style="font-size:10px; color:var(--muted); margin-top:2px;">Early access community. Spots limited.</div>
+          </div>
+          <div class="community-count">∞+</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-text">
+      <div class="eyebrow">Called to Create Community</div>
+      <h2>YOU WERE NOT<br>BUILT TO <span>CREATE ALONE.</span></h2>
+      <p>The Called to Create Community is a curated space for creators who are serious about their craft. Get feedback, stay accountable, and grow alongside people who understand the journey.</p>
+      <ul class="feature-list">
+        <li>Live content reviews and constructive feedback sessions</li>
+        <li>Weekly accountability check ins and goal tracking</li>
+        <li>Direct access to teachings from Samuel and guest experts</li>
+        <li>A network of creators across every niche and platform</li>
+        <li>WhatsApp group for real time connection and support</li>
+      </ul>
+      <a href="https://tally.so/r/kdzByZ" class="btn-gold">Join the Community Waitlist</a>
+    </div>
+  </div>
+
+  <!-- ACADEMY -->
+  <div class="feature-row reverse reveal" id="academy-section">
+    <div class="feature-text">
+      <div class="eyebrow">Called to Create Academy</div>
+      <h2>MASTER THE<br><span>COMPLETE</span> CRAFT.</h2>
+      <p>The Called to Create Academy is a structured, comprehensive course designed to take you from zero to confident creator. Every module is built to be immediately actionable.</p>
+      <ul class="feature-list">
+        <li>Mindset and identity work to build an unshakeable creator foundation</li>
+        <li>Personal branding strategy that attracts your ideal audience</li>
+        <li>Ideation systems so you never run out of content ideas</li>
+        <li>Scripting frameworks engineered for maximum retention</li>
+        <li>Filming and video editing mastery from beginner to advanced</li>
+        <li>Marketing and growth strategy to get your work seen</li>
+      </ul>
+      <a href="https://tally.so/r/kdzByZ" class="btn-gold">Join the Academy Waitlist</a>
+    </div>
+
+    <div class="feature-visual">
+      <div class="feature-visual-inner">
+        <div class="curriculum-list">
+          <div class="curriculum-item">
+            <span class="curriculum-num">01</span>
+            <span class="curriculum-name">Mindset & Identity</span>
+            <span class="curriculum-check"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+          </div>
+          <div class="curriculum-item">
+            <span class="curriculum-num">02</span>
+            <span class="curriculum-name">Personal Branding</span>
+            <span class="curriculum-check"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+          </div>
+          <div class="curriculum-item">
+            <span class="curriculum-num">03</span>
+            <span class="curriculum-name">Ideation Systems</span>
+            <span class="curriculum-check"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+          </div>
+          <div class="curriculum-item">
+            <span class="curriculum-num">04</span>
+            <span class="curriculum-name">Scripting & Hooks</span>
+            <span class="curriculum-check"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+          </div>
+          <div class="curriculum-item">
+            <span class="curriculum-num">05</span>
+            <span class="curriculum-name">Filming Mastery</span>
+            <span class="curriculum-check"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+          </div>
+          <div class="curriculum-item">
+            <span class="curriculum-num">06</span>
+            <span class="curriculum-name">Video Editing</span>
+            <span class="curriculum-check"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+          </div>
+          <div class="curriculum-item">
+            <span class="curriculum-num">07</span>
+            <span class="curriculum-name">Marketing & Growth</span>
+            <span class="curriculum-check"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- APP DEEP DIVE -->
+<section id="app-section">
+  <div class="app-inner">
+    <div class="app-phones reveal">
+      <!-- Phone 1: Dashboard -->
+      <div class="phone">
+        <div class="phone-notch"></div>
+        <div class="phone-body">
+          <div class="p-greeting">Welcome back,</div>
+          <div class="p-name">MELISSA ✦</div>
+          <div class="p-card-gold">
+            <div class="p-cl">New content</div>
+            <div class="p-ct">Create a post →</div>
+          </div>
+          <div class="p-row">
+            <div class="p-mini">
+              <div class="p-ml">Views</div>
+              <div class="p-mv">45.2K</div>
+            </div>
+            <div class="p-mini">
+              <div class="p-ml">Score</div>
+              <div class="p-mv">87%</div>
+            </div>
+          </div>
+          <div class="p-section-title">Recent Posts</div>
+          <div class="p-post">
+            <div class="p-post-dot" style="background:#4ade80"></div>
+            <div class="p-post-text">5 Quick Breakfast Ideas</div>
+            <div class="p-post-val">12.5K</div>
+          </div>
+          <div class="p-post">
+            <div class="p-post-dot" style="background:#4ade80"></div>
+            <div class="p-post-text">Morning Routine Vlog</div>
+            <div class="p-post-val">8.2K</div>
+          </div>
+          <div class="p-post">
+            <div class="p-post-dot" style="background:#d4af37"></div>
+            <div class="p-post-text">Video Editing Tips</div>
+            <div class="p-post-val">Sched.</div>
+          </div>
+        </div>
+      </div>
+      <!-- Phone 2: Analytics -->
+      <div class="phone phone-2">
+        <div class="phone-notch"></div>
+        <div class="phone-body">
+          <div class="p-greeting">Analytics</div>
+          <div class="p2-header">Performance this week</div>
+          <div class="p2-bars">
+            <div class="p2-bar" style="height:45%"></div>
+            <div class="p2-bar" style="height:65%"></div>
+            <div class="p2-bar" style="height:50%"></div>
+            <div class="p2-bar a" style="height:90%"></div>
+            <div class="p2-bar a" style="height:72%"></div>
+            <div class="p2-bar a" style="height:85%"></div>
+            <div class="p2-bar" style="height:60%"></div>
+          </div>
+          <div class="p2-days">
+            <div class="p2-day">M</div><div class="p2-day">T</div><div class="p2-day">W</div>
+            <div class="p2-day">T</div><div class="p2-day">F</div><div class="p2-day">S</div><div class="p2-day">S</div>
+          </div>
+          <div class="p2-stats">
+            <div class="p2-stat"><div class="p2-stat-n">45K</div><div class="p2-stat-l">Total views</div></div>
+            <div class="p2-stat"><div class="p2-stat-n">+24%</div><div class="p2-stat-l">This period</div></div>
+            <div class="p2-stat"><div class="p2-stat-n">12.4%</div><div class="p2-stat-l">Engagement</div></div>
+            <div class="p2-stat"><div class="p2-stat-n">28</div><div class="p2-stat-l">Posts</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="app-text reveal">
+      <div class="eyebrow">HighSignals App</div>
+      <h2>SCRIPT SMARTER.<br>POST <span>STRONGER.</span></h2>
+      <p>The HighSignals App is your mobile first creator companion. Capture ideas, write scripts, and schedule content anywhere, all powered by an AI that understands exactly who your audience is.</p>
+
+      <ul class="app-features">
+        <li class="app-feat">
+          <div class="app-feat-icon">💡</div>
+          <div>
+            <div class="app-feat-title">Ideation Engine</div>
+            <div class="app-feat-desc">Generate content ideas tailored to your niche, your voice, and your ICP, so every idea you start with is already a strong one.</div>
+          </div>
+        </li>
+        <li class="app-feat">
+          <div class="app-feat-icon">📅</div>
+          <div>
+            <div class="app-feat-title">Content Calendar</div>
+            <div class="app-feat-desc">Plan, schedule, and manage your content pipeline from your phone. Never miss a posting day again.</div>
+          </div>
+        </li>
+        <li class="app-feat">
+          <div class="app-feat-icon">📊</div>
+          <div>
+            <div class="app-feat-title">Performance Analytics</div>
+            <div class="app-feat-desc">Track views, engagement rates, and post performance across TikTok, Instagram, and YouTube in one unified dashboard.</div>
+          </div>
+        </li>
+      </ul>
+
+      <div class="ai-callout">
+        <div class="ai-callout-head">
+          <span class="ai-badge">AI Auditor</span>
+          <span class="ai-callout-title">It doesn't write for you. It makes your writing viral.</span>
+        </div>
+        <p class="ai-callout-body">
+          Paste in your script and the AI, trained on your <strong>Ideal Customer Profile</strong> and your target audience, scores it against proven viral content strategies. It identifies weak hooks, pacing issues, and missed angles, then suggests targeted modifications to maximize performance.
+          <strong>You stay in control. The AI makes you unstoppable.</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT FOUNDER -->
+<section id="about-founder">
+  <div class="founder-inner">
+    <div class="founder-photo-wrap reveal">
+      <div class="founder-photo">
+        <img src="images/man.jpeg" style="width:100%;height:100%;object-fit:cover;" alt="Samuel Founder">
+      </div>
+      <div class="founder-gold-tag">Samuel — Founder</div>
+    </div>
+
+    <div class="founder-text reveal">
+      <div class="eyebrow">About the Founder</div>
+      <h2>THE <span>SIGNAL</span><br>BEHIND THE<br>BRAND.</h2>
+
+      <p>HighSignals was born from a simple but powerful conviction: that every person has a message worth sharing, and that the tools, knowledge, and community to share it well should be accessible to anyone willing to put in the work.</p>
+
+      <p>Samuel built HighSignals after experiencing firsthand how overwhelming and isolating the content creation journey can be. No clear roadmap. No genuine feedback. No community that truly understood the grind.</p>
+
+      <div class="founder-quote">
+        <p class="founder-quote-text">"I didn't build HighSignals for the people who already know everything. I built it for the person who knows they have something to say, and just needs the right system to say it powerfully."</p>
+        <p class="founder-quote-attr">— Samuel, Founder of HighSignals</p>
+      </div>
+
+      <p>Today, HighSignals stands as a complete creator ecosystem. Three products, one unwavering mission: to inspire and empower the next generation of intentional creators.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WAITLIST CTA -->
+<section id="waitlist">
+  <div style="max-width:1200px; margin:0 auto; padding:120px 56px;">
+    <div class="waitlist-card reveal">
+      <div class="waitlist-content">
+        <div class="eyebrow">Early Access — Spots Are Limited</div>
+        <h2 class="waitlist-title">THE SIGNAL<br>IS <span class="gold">CALLING.</span></h2>
+        <p class="waitlist-sub">Join the waitlist and be among the first to access the HighSignals ecosystem, including Community, Academy, and App, when we launch.</p>
+
+        <form class="waitlist-form" id="waitlistForm" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <input type="text" class="wl-input" placeholder="Full Name *" required id="wlName">
+            <input type="email" class="wl-input" placeholder="Email Address *" required id="wlEmail">
+          </div>
+          <input type="tel" class="wl-input" placeholder="WhatsApp Number (with country code) *" required id="wlPhone">
+          <select class="wl-select" id="wlInterest" required>
+            <option value="" disabled selected>What excites you most? *</option>
+            <option value="app">HighSignals App</option>
+            <option value="academy">Called to Create Academy</option>
+            <option value="community">Called to Create Community</option>
+            <option value="all">All Three — I want it all</option>
+          </select>
+          <button type="submit" class="wl-submit">Secure My Spot →</button>
+          <p class="wl-note">No spam. Ever. Your details go straight to our waitlist.</p>
+        </form>
+
+        <div class="success-msg" id="successMsg">
+          ✓ You are on the list! Check your WhatsApp for next steps. Welcome to the movement.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">HIGHSIGNALS</div>
+  <p class="footer-copy">© 2026 HighSignals. All rights reserved. Pre launch phase.</p>
+  <ul class="footer-links">
+    <li><a href="#">Privacy</a></li>
+    <li><a href="#">Terms</a></li>
+    <li><a href="#about-founder">About</a></li>
+    <li><a href="#waitlist">Waitlist</a></li>
+  </ul>
+</footer>
+
+<script>
+// Scroll reveal
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('up'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// Nav scroll
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('main-nav');
+  nav.style.background = window.scrollY > 60
+    ? 'rgba(10,25,47,0.97)'
+    : 'rgba(10,25,47,0.85)';
+});
+
+// Video player - FIXED with working YouTube embed
+function loadVideo() {
+  const wrap = document.querySelector('.video-player-wrap');
+  const videoId = 'IEvtgFKxEhY'; // Your founder video
+  wrap.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${videoId}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+}
+
+// Waitlist form handler
+function handleSubmit(e) {
+  e.preventDefault();
+  const name = document.getElementById('wlName').value;
+  const email = document.getElementById('wlEmail').value;
+  const phone = document.getElementById('wlPhone').value;
+  const interest = document.getElementById('wlInterest').value;
+
+  // Store in localStorage or just show success
+  document.getElementById('waitlistForm').style.display = 'none';
+  const msg = document.getElementById('successMsg');
+  msg.style.display = 'block';
+  
+  // Optional: redirect to WhatsApp group after 2 seconds (replace with actual link)
+  setTimeout(() => {
+    // You can replace with actual WhatsApp group link
+    // window.open('https://chat.whatsapp.com/YOUR_LINK', '_blank');
+    // For now just show success, but you can enable:
+    // console.log('waitlist submitted', {name, email, phone, interest});
+  }, 1500);
+}
+
+// Hamburger menu for mobile
+document.getElementById('hamburger').addEventListener('click', () => {
+  const links = document.querySelector('.nav-links');
+  if (links.style.display === 'flex') {
+    links.style.display = 'none';
+  } else {
+    links.style.cssText = 'display:flex; flex-direction:column; position:absolute; top:72px; left:0; right:0; background:rgba(10,25,47,0.98); padding:28px 28px; gap:20px; border-bottom:1px solid rgba(212,175,55,0.2); z-index:400;';
+  }
+});
+</script>
+</body>
+</html>

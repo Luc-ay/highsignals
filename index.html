@@ -1,5 +1,3 @@
-Here is the updated HTML document with the hyphenation removed for a more natural, human-readable flow.
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,7 +43,8 @@ body::after {
   pointer-events: none;
   z-index: 9999;
   opacity: 0.025;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)' opacity='0.7'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
 }
 
 /* ══════════════════════════════
@@ -998,44 +997,20 @@ footer {
   letter-spacing: 2px;
   color: var(--gold);
 }
-.footer-copy { font-size: 13px; color: var(--muted); }
-.footer-links { display: flex; gap: 28px; list-style: none; }
+.footer-links { display: flex; gap: 32px; align-items: center; flex-wrap: wrap; }
 .footer-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
 .footer-links a:hover { color: var(--white); }
+.footer-copyright { font-size: 12px; color: var(--muted); letter-spacing: 0.5px; }
 
-/* ══════════════════════════════
-   SCROLL REVEAL
-══════════════════════════════ */
-.reveal {
-  opacity: 0;
-  transform: translateY(36px);
-  transition: opacity 0.75s ease, transform 0.75s ease;
-}
-.reveal.up { opacity: 1; transform: none; }
-.reveal-d1 { transition-delay: 0.1s; }
-.reveal-d2 { transition-delay: 0.2s; }
-.reveal-d3 { transition-delay: 0.3s; }
-
-/* ══════════════════════════════
-   RESPONSIVE
-══════════════════════════════ */
-@media(max-width: 1024px) {
-  nav { padding: 0 28px; }
-  .nav-links { display: none; }
-  .hamburger { display: flex; }
-  #hero, #video-section, #app-section, .two-up, #about-founder, #waitlist, #ecosystem { padding-left: 28px; padding-right: 28px; }
-  #ecosystem { padding: 80px 28px; }
-  .eco-grid { grid-template-columns: 1fr; }
-  .video-wrap, .app-inner, .feature-row, .founder-inner { grid-template-columns: 1fr; gap: 48px; }
-  .feature-row.reverse { direction: ltr; }
-  .app-phones { justify-content: center; }
-  .founder-inner { grid-template-columns: 1fr; }
-  .founder-photo-wrap { max-width: 320px; margin: 0 auto; }
-  .waitlist-card { padding: 60px 28px; }
-  .form-row { grid-template-columns: 1fr; }
-  footer { flex-direction: column; text-align: center; }
-}
-@media(max-width: 640px) {
+@media (max-width: 900px) {
+  nav { padding: 0 32px; }
+  .nav-links { gap: 24px; }
+  .video-wrap { grid-template-columns: 1fr; gap: 40px; }
+  .app-inner { grid-template-columns: 1fr; gap: 40px; }
+  .founder-inner { grid-template-columns: 1fr; gap: 40px; }
+  .eco-grid { grid-template-columns: repeat(2, 1fr); }
+  .feature-row { grid-template-columns: 1fr; gap: 40px; }
+  .waitlist-card { padding: 60px 40px; }
   .hero-stats { gap: 32px; }
   .phone-2 { display: none; }
   .waitlist-title { font-size: 52px; }
@@ -1113,23 +1088,11 @@ footer {
     <span class="m-item">Academy<span class="m-dot"></span></span>
     <span class="m-item">HighSignals App<span class="m-dot"></span></span>
     <span class="m-item">AI Script Auditor<span class="m-dot"></span></span>
-    <span class="m-item">ICP Profiling<span class="m-dot"></span></span>
-    <span class="m-item">Content Calendar<span class="m-dot"></span></span>
-    <span class="m-item">Analytics<span class="m-dot"></span></span>
-    <span class="m-item">Personal Branding<span class="m-dot"></span></span>
-    <span class="m-item">Video Editing<span class="m-dot"></span></span>
-    <span class="m-item">Viral Scripting<span class="m-dot"></span></span>
     <span class="m-item">Called to Create<span class="m-dot"></span></span>
     <span class="m-item">Community<span class="m-dot"></span></span>
     <span class="m-item">Academy<span class="m-dot"></span></span>
     <span class="m-item">HighSignals App<span class="m-dot"></span></span>
     <span class="m-item">AI Script Auditor<span class="m-dot"></span></span>
-    <span class="m-item">ICP Profiling<span class="m-dot"></span></span>
-    <span class="m-item">Content Calendar<span class="m-dot"></span></span>
-    <span class="m-item">Analytics<span class="m-dot"></span></span>
-    <span class="m-item">Personal Branding<span class="m-dot"></span></span>
-    <span class="m-item">Video Editing<span class="m-dot"></span></span>
-    <span class="m-item">Viral Scripting<span class="m-dot"></span></span>
   </div>
 </div>
 
@@ -1145,6 +1108,7 @@ footer {
       <a href="https://tally.so/r/kdzByZ" class="btn-gold" style="margin-top: 8px;">Join the Movement</a>
     </div>
     <div class="video-player-wrap">
+      <iframe id="videoFrame" src="" title="Founder's Welcome Message" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       <div class="video-placeholder" id="videoPlaceholder" onclick="loadVideo()">
         <div class="video-play-btn">
           <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1193,15 +1157,14 @@ footer {
       <div class="eco-card-top">
         <div class="eco-num">02</div>
         <div class="eco-icon">🎓</div>
-        <div class="eco-label">Education</div>
-        <div class="eco-title">CALLED TO CREATE ACADEMY</div>
-        <p class="eco-desc">A comprehensive curriculum teaching content creation from A to Z. Mindset, personal branding, scripting, filming, video editing, and marketing. Everything under one roof.</p>
+        <div class="eco-label">Academy</div>
+        <div class="eco-title">HIGH SIGNALS ACADEMY</div>
+        <p class="eco-desc">A curated curriculum designed to teach creators the fundamentals of content creation, from scriptwriting to analytics. Learn from the best, grow with community.</p>
       </div>
       <div class="eco-tags">
-        <span class="eco-tag">Mindset</span>
-        <span class="eco-tag">Scripting</span>
-        <span class="eco-tag">Editing</span>
-        <span class="eco-tag">Marketing</span>
+        <span class="eco-tag">Education</span>
+        <span class="eco-tag">Step-by-step Courses</span>
+        <span class="eco-tag">Certification</span>
       </div>
       <div class="eco-card-foot">
         <a href="#academy-section" class="eco-link">
@@ -1215,15 +1178,15 @@ footer {
     <div class="eco-card reveal reveal-d3">
       <div class="eco-card-top">
         <div class="eco-num">03</div>
-        <div class="eco-icon">📱</div>
-        <div class="eco-label">Technology</div>
+        <div class="eco-icon">⚡</div>
+        <div class="eco-label">App + AI Auditor</div>
         <div class="eco-title">HIGHSIGNALS APP</div>
-        <p class="eco-desc">A mobile first tool for ideation and scripting, with an AI that knows your audience. Capture ideas, write scripts on the go, and get them audited by an AI that knows what goes viral.</p>
+        <p class="eco-desc">An all in one creator platform with AI powered script analysis. Write scripts, get instant feedback from our AI auditor, and optimize your content before you hit publish.</p>
       </div>
       <div class="eco-tags">
-        <span class="eco-tag">AI Auditor</span>
-        <span class="eco-tag">ICP Aware</span>
-        <span class="eco-tag">Analytics</span>
+        <span class="eco-tag">AI Analysis</span>
+        <span class="eco-tag">Script Editor</span>
+        <span class="eco-tag">Optimization</span>
       </div>
       <div class="eco-card-foot">
         <a href="#app-section" class="eco-link">
@@ -1235,301 +1198,212 @@ footer {
   </div>
 </section>
 
-<!-- COMMUNITY + ACADEMY DETAIL ROWS -->
-<div class="two-up">
-
-  <!-- COMMUNITY -->
-  <div class="feature-row reveal" id="community-section">
-    <div class="feature-visual">
-      <div class="feature-visual-inner">
-        <div class="community-grid">
-          <div class="community-member">
-            <div class="member-avatar" style="background:#d4af37;">A</div>
-            <div>
-              <div class="member-name">Amara K.</div>
-              <div class="member-role">Lifestyle Creator</div>
-            </div>
-          </div>
-          <div class="community-member">
-            <div class="member-avatar" style="background:#4ade80;">T</div>
-            <div>
-              <div class="member-name">Tobi F.</div>
-              <div class="member-role">Business Coach</div>
-            </div>
-          </div>
-          <div class="community-member">
-            <div class="member-avatar" style="background:#60a5fa;">C</div>
-            <div>
-              <div class="member-name">Chioma E.</div>
-              <div class="member-role">Tech Creator</div>
-            </div>
-          </div>
-          <div class="community-member">
-            <div class="member-avatar" style="background:#f97316;">D</div>
-            <div>
-              <div class="member-name">David M.</div>
-              <div class="member-role">Finance Creator</div>
-            </div>
-          </div>
-        </div>
-        <div class="community-banner">
-          <div>
-            <div class="community-banner-text">Creators and Counting</div>
-            <div style="font-size:10px; color:var(--muted); margin-top:2px;">Early access community. Spots limited.</div>
-          </div>
-          <div class="community-count">∞+</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="feature-text">
-      <div class="eyebrow">Called to Create Community</div>
-      <h2>YOU WERE NOT<br>BUILT TO <span>CREATE ALONE.</span></h2>
-      <p>The Called to Create Community is a curated space for creators who are serious about their craft. Get feedback, stay accountable, and grow alongside people who understand the journey.</p>
-      <ul class="feature-list">
-        <li>Live content reviews and constructive feedback sessions</li>
-        <li>Weekly accountability check ins and goal tracking</li>
-        <li>Direct access to teachings from Samuel and guest experts</li>
-        <li>A network of creators across every niche and platform</li>
-        <li>WhatsApp group for real time connection and support</li>
-      </ul>
-      <a href="https://tally.so/r/kdzByZ" class="btn-gold">Join the Community Waitlist</a>
-    </div>
-  </div>
-
-  <!-- ACADEMY -->
-  <div class="feature-row reverse reveal" id="academy-section">
-    <div class="feature-text">
-      <div class="eyebrow">Called to Create Academy</div>
-      <h2>MASTER THE<br><span>COMPLETE</span> CRAFT.</h2>
-      <p>The Called to Create Academy is a structured, comprehensive course designed to take you from zero to confident creator. Every module is built to be immediately actionable.</p>
-      <ul class="feature-list">
-        <li>Mindset and identity work to build an unshakeable creator foundation</li>
-        <li>Personal branding strategy that attracts your ideal audience</li>
-        <li>Ideation systems so you never run out of content ideas</li>
-        <li>Scripting frameworks engineered for maximum retention</li>
-        <li>Filming and video editing mastery from beginner to advanced</li>
-        <li>Marketing and growth strategy to get your work seen</li>
-      </ul>
-      <a href="https://tally.so/r/kdzByZ" class="btn-gold">Join the Academy Waitlist</a>
-    </div>
-
-    <div class="feature-visual">
-      <div class="feature-visual-inner">
-        <div class="curriculum-list">
-          <div class="curriculum-item">
-            <span class="curriculum-num">01</span>
-            <span class="curriculum-name">Mindset & Identity</span>
-            <span class="curriculum-check"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round"/></svg></span>
-          </div>
-          <div class="curriculum-item">
-            <span class="curriculum-num">02</span>
-            <span class="curriculum-name">Personal Branding</span>
-            <span class="curriculum-check"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round"/></svg></span>
-          </div>
-          <div class="curriculum-item">
-            <span class="curriculum-num">03</span>
-            <span class="curriculum-name">Ideation Systems</span>
-            <span class="curriculum-check"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round"/></svg></span>
-          </div>
-          <div class="curriculum-item">
-            <span class="curriculum-num">04</span>
-            <span class="curriculum-name">Scripting & Hooks</span>
-            <span class="curriculum-check"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round"/></svg></span>
-          </div>
-          <div class="curriculum-item">
-            <span class="curriculum-num">05</span>
-            <span class="curriculum-name">Filming Mastery</span>
-            <span class="curriculum-check"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round"/></svg></span>
-          </div>
-          <div class="curriculum-item">
-            <span class="curriculum-num">06</span>
-            <span class="curriculum-name">Video Editing</span>
-            <span class="curriculum-check"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round"/></svg></span>
-          </div>
-          <div class="curriculum-item">
-            <span class="curriculum-num">07</span>
-            <span class="curriculum-name">Marketing & Growth</span>
-            <span class="curriculum-check"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round"/></svg></span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div>
-
 <!-- APP DEEP DIVE -->
 <section id="app-section">
   <div class="app-inner">
-    <div class="app-phones reveal">
-      <!-- Phone 1: Dashboard -->
+    <div class="app-phones">
       <div class="phone">
         <div class="phone-notch"></div>
         <div class="phone-body">
-          <div class="p-greeting">Welcome back,</div>
-          <div class="p-name">MELISSA ✦</div>
+          <div class="p-greeting">Hi there 👋</div>
+          <div class="p-name">Welcome</div>
           <div class="p-card-gold">
-            <div class="p-cl">New content</div>
-            <div class="p-ct">Create a post →</div>
+            <div class="p-cl">FEATURED</div>
+            <div class="p-ct">$4.2M in new funds</div>
           </div>
           <div class="p-row">
             <div class="p-mini">
-              <div class="p-ml">Views</div>
-              <div class="p-mv">45.2K</div>
+              <div class="p-ml">VIEWS</div>
+              <div class="p-mv">2.4M</div>
             </div>
             <div class="p-mini">
-              <div class="p-ml">Score</div>
-              <div class="p-mv">87%</div>
+              <div class="p-ml">GROWTH</div>
+              <div class="p-mv">+23%</div>
             </div>
           </div>
-          <div class="p-section-title">Recent Posts</div>
+          <div class="p-section-title">YOUR CONTENT</div>
           <div class="p-post">
-            <div class="p-post-dot" style="background:#4ade80"></div>
-            <div class="p-post-text">5 Quick Breakfast Ideas</div>
-            <div class="p-post-val">12.5K</div>
+            <span class="p-post-dot" style="background: #4ade80;"></span>
+            <span class="p-post-text">The Future of AI</span>
+            <span class="p-post-val">847 views</span>
           </div>
           <div class="p-post">
-            <div class="p-post-dot" style="background:#4ade80"></div>
-            <div class="p-post-text">Morning Routine Vlog</div>
-            <div class="p-post-val">8.2K</div>
+            <span class="p-post-dot" style="background: #f59e0b;"></span>
+            <span class="p-post-text">How to Build an...</span>
+            <span class="p-post-val">1.2k views</span>
           </div>
           <div class="p-post">
-            <div class="p-post-dot" style="background:#d4af37"></div>
-            <div class="p-post-text">Video Editing Tips</div>
-            <div class="p-post-val">Sched.</div>
+            <span class="p-post-dot" style="background: #ef4444;"></span>
+            <span class="p-post-text">Crypto Crash Course</span>
+            <span class="p-post-val">3.1k views</span>
           </div>
         </div>
       </div>
-      <!-- Phone 2: Analytics -->
       <div class="phone phone-2">
         <div class="phone-notch"></div>
         <div class="phone-body">
-          <div class="p-greeting">Analytics</div>
-          <div class="p2-header">Performance this week</div>
+          <div class="p2-header">ANALYTICS</div>
           <div class="p2-bars">
-            <div class="p2-bar" style="height:45%"></div>
-            <div class="p2-bar" style="height:65%"></div>
-            <div class="p2-bar" style="height:50%"></div>
-            <div class="p2-bar a" style="height:90%"></div>
-            <div class="p2-bar a" style="height:72%"></div>
-            <div class="p2-bar a" style="height:85%"></div>
-            <div class="p2-bar" style="height:60%"></div>
+            <div class="p2-bar"></div>
+            <div class="p2-bar a"></div>
+            <div class="p2-bar"></div>
+            <div class="p2-bar"></div>
+            <div class="p2-bar"></div>
           </div>
           <div class="p2-days">
-            <div class="p2-day">M</div><div class="p2-day">T</div><div class="p2-day">W</div>
-            <div class="p2-day">T</div><div class="p2-day">F</div><div class="p2-day">S</div><div class="p2-day">S</div>
+            <div class="p2-day">Mon</div>
+            <div class="p2-day">Tue</div>
+            <div class="p2-day">Wed</div>
+            <div class="p2-day">Thu</div>
+            <div class="p2-day">Fri</div>
           </div>
           <div class="p2-stats">
-            <div class="p2-stat"><div class="p2-stat-n">45K</div><div class="p2-stat-l">Total views</div></div>
-            <div class="p2-stat"><div class="p2-stat-n">+24%</div><div class="p2-stat-l">This period</div></div>
-            <div class="p2-stat"><div class="p2-stat-n">12.4%</div><div class="p2-stat-l">Engagement</div></div>
-            <div class="p2-stat"><div class="p2-stat-n">28</div><div class="p2-stat-l">Posts</div></div>
+            <div class="p2-stat">
+              <div class="p2-stat-n">94K</div>
+              <div class="p2-stat-l">Impressions</div>
+            </div>
+            <div class="p2-stat">
+              <div class="p2-stat-n">3.2K</div>
+              <div class="p2-stat-l">Engagements</div>
+            </div>
+            <div class="p2-stat">
+              <div class="p2-stat-n">7.8%</div>
+              <div class="p2-stat-l">CTR</div>
+            </div>
+            <div class="p2-stat">
+              <div class="p2-stat-n">1.2s</div>
+              <div class="p2-stat-l">Avg. Time</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="app-text reveal">
-      <div class="eyebrow">HighSignals App</div>
-      <h2>SCRIPT SMARTER.<br>POST <span>STRONGER.</span></h2>
-      <p>The HighSignals App is your mobile first creator companion. Capture ideas, write scripts, and schedule content anywhere, all powered by an AI that understands exactly who your audience is.</p>
-
+    <div class="app-text">
+      <div class="eyebrow">The HighSignals App</div>
+      <h2>ALL YOUR <span>CREATOR TOOLS</span> IN ONE PLACE.</h2>
+      <p>An intuitive dashboard where you can track your content performance, manage uploads, and collaborate with other creators. But that's just the start.</p>
       <ul class="app-features">
-        <li class="app-feat">
-          <div class="app-feat-icon">💡</div>
-          <div>
-            <div class="app-feat-title">Ideation Engine</div>
-            <div class="app-feat-desc">Generate content ideas tailored to your niche, your voice, and your ICP, so every idea you start with is already a strong one.</div>
-          </div>
-        </li>
-        <li class="app-feat">
-          <div class="app-feat-icon">📅</div>
-          <div>
-            <div class="app-feat-title">Content Calendar</div>
-            <div class="app-feat-desc">Plan, schedule, and manage your content pipeline from your phone. Never miss a posting day again.</div>
-          </div>
-        </li>
         <li class="app-feat">
           <div class="app-feat-icon">📊</div>
           <div>
-            <div class="app-feat-title">Performance Analytics</div>
-            <div class="app-feat-desc">Track views, engagement rates, and post performance across TikTok, Instagram, and YouTube in one unified dashboard.</div>
+            <div class="app-feat-title">AI Script Auditor</div>
+            <div class="app-feat-desc">Paste your script and get AI powered analysis on structure, pacing, and engagement potential before you film.</div>
+          </div>
+        </li>
+        <li class="app-feat">
+          <div class="app-feat-icon">🔄</div>
+          <div>
+            <div class="app-feat-title">Format Converter</div>
+            <div class="app-feat-desc">Convert YouTube videos into TikTok, Instagram Reels, and LinkedIn short form content automatically.</div>
+          </div>
+        </li>
+        <li class="app-feat">
+          <div class="app-feat-icon">👥</div>
+          <div>
+            <div class="app-feat-title">Collaboration Tools</div>
+            <div class="app-feat-desc">Work with other creators in the HighSignals community, share feedback, and grow together.</div>
           </div>
         </li>
       </ul>
-
       <div class="ai-callout">
         <div class="ai-callout-head">
-          <span class="ai-badge">AI Auditor</span>
-          <span class="ai-callout-title">It doesn't write for you. It makes your writing viral.</span>
+          <span class="ai-badge">⚡ AI POWERED</span>
+          <div class="ai-callout-title">Script Analysis That Matters</div>
         </div>
-        <p class="ai-callout-body">
-          Paste in your script and the AI, trained on your <strong>Ideal Customer Profile</strong> and your target audience, scores it against proven viral content strategies. It identifies weak hooks, pacing issues, and missed angles, then suggests targeted modifications to maximize performance.
-          <strong>You stay in control. The AI makes you unstoppable.</strong>
-        </p>
+        <div class="ai-callout-body">
+          Our AI doesn't just give generic feedback. It analyzes your script for <strong>hook strength, pacing, emotional beats,</strong> and <strong>audience retention patterns</strong> based on real creator data and platform algorithms.
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT FOUNDER -->
+<!-- COMMUNITY SECTION -->
+<section class="two-up">
+  <div class="feature-row">
+    <div class="feature-visual">
+      <div class="feature-visual-inner">
+        <div style="text-align: center; color: var(--muted); font-size: 14px;">Community Showcase</div>
+      </div>
+    </div>
+    <div class="feature-text">
+      <div class="eyebrow">The Community</div>
+      <h2>CALLED TO <span>CREATE</span></h2>
+      <p>A vibrant network of creators who push each other to be better. Share your work, get constructive feedback, stay accountable, and grow together. This is where the magic happens.</p>
+      <ul class="feature-list">
+        <li>Weekly accountability groups where creators check in on their goals</li>
+        <li>Peer review sessions for scripts, thumbnails, and content strategy</li>
+        <li>Exclusive networking events and collaboration opportunities</li>
+        <li>Access to founder insights and behind the scenes content</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="feature-row reverse">
+    <div class="feature-visual">
+      <div class="feature-visual-inner">
+        <div style="text-align: center; color: var(--muted); font-size: 14px;">Academy Curriculum</div>
+      </div>
+    </div>
+    <div class="feature-text">
+      <div class="eyebrow">The Academy</div>
+      <h2>EDUCATION <span>THAT ACTUALLY WORKS</span></h2>
+      <p>Step by step courses taught by creators who have been in the trenches. From scriptwriting fundamentals to advanced analytics, the HighSignals Academy equips you with everything you need to succeed.</p>
+      <ul class="feature-list">
+        <li>Comprehensive scriptwriting course with templates and frameworks</li>
+        <li>Video analytics deep dive for YouTube, TikTok, and Instagram</li>
+        <li>Thumbnail design and psychology masterclass</li>
+        <li>Monetization strategies from creators with millions of views</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER SECTION -->
 <section id="about-founder">
   <div class="founder-inner">
-    <div class="founder-photo-wrap reveal">
+    <div class="founder-photo-wrap">
       <div class="founder-photo">
-        <img src="images/man.jpeg" style="width:100%;height:100%;object-fit:cover;" alt="Samuel Founder">
+        <img src="images/founder.jpg" alt="Samuel - HighSignals Founder">
       </div>
-      <div class="founder-gold-tag">Samuel — Founder</div>
+      <div class="founder-gold-tag">Founder & CEO</div>
     </div>
-
-    <div class="founder-text reveal">
-      <div class="eyebrow">About the Founder</div>
-      <h2>THE <span>SIGNAL</span><br>BEHIND THE<br>BRAND.</h2>
-
-      <p>HighSignals was born from a simple but powerful conviction: that every person has a message worth sharing, and that the tools, knowledge, and community to share it well should be accessible to anyone willing to put in the work.</p>
-
-      <p>Samuel built HighSignals after experiencing firsthand how overwhelming and isolating the content creation journey can be. No clear roadmap. No genuine feedback. No community that truly understood the grind.</p>
-
+    <div class="founder-text">
+      <h2><span>BUILT BY A CREATOR,</span><br>FOR CREATORS.</h2>
+      <p>Samuel spent years creating content across multiple platforms, experiencing firsthand the fragmentation and frustration of the creator economy. Thousands of apps, no unified vision. Thousands of educators, but few who truly understood the creator's journey.</p>
+      <p>HighSignals was born from a simple conviction: creators deserve better. They deserve a space where community isn't secondary, where education is genuine, and where technology actually serves their vision.</p>
       <div class="founder-quote">
-        <p class="founder-quote-text">"I didn't build HighSignals for the people who already know everything. I built it for the person who knows they have something to say, and just needs the right system to say it powerfully."</p>
-        <p class="founder-quote-attr">— Samuel, Founder of HighSignals</p>
+        <div class="founder-quote-text">
+          "I built HighSignals for the creator who refuses to be average. You're not here to just post into the void. You're here to create with intention, build with purpose, and grow without limits."
+        </div>
+        <div class="founder-quote-attr">— Samuel, Founder</div>
       </div>
-
-      <p>Today, HighSignals stands as a complete creator ecosystem. Three products, one unwavering mission: to inspire and empower the next generation of intentional creators.</p>
+      <p>Today, HighSignals is bringing together the best creators, educators, and builders to reshape what's possible for content creation.</p>
     </div>
   </div>
 </section>
 
 <!-- WAITLIST CTA -->
 <section id="waitlist">
-  <div style="max-width:1200px; margin:0 auto; padding:120px 56px;">
-    <div class="waitlist-card reveal">
-      <div class="waitlist-content">
-        <div class="eyebrow">Early Access — Spots Are Limited</div>
-        <h2 class="waitlist-title">THE SIGNAL<br>IS <span class="gold">CALLING.</span></h2>
-        <p class="waitlist-sub">Join the waitlist and be among the first to access the HighSignals ecosystem, including Community, Academy, and App, when we launch.</p>
-
-        <form class="waitlist-form" id="waitlistForm" onsubmit="handleSubmit(event)">
-          <div class="form-row">
-            <input type="text" class="wl-input" placeholder="Full Name *" required id="wlName">
-            <input type="email" class="wl-input" placeholder="Email Address *" required id="wlEmail">
-          </div>
-          <input type="tel" class="wl-input" placeholder="WhatsApp Number (with country code) *" required id="wlPhone">
-          <select class="wl-select" id="wlInterest" required>
-            <option value="" disabled selected>What excites you most? *</option>
-            <option value="app">HighSignals App</option>
-            <option value="academy">Called to Create Academy</option>
-            <option value="community">Called to Create Community</option>
-            <option value="all">All Three — I want it all</option>
-          </select>
-          <button type="submit" class="wl-submit">Secure My Spot →</button>
-          <p class="wl-note">No spam. Ever. Your details go straight to our waitlist.</p>
-        </form>
-
-        <div class="success-msg" id="successMsg">
-          ✓ You are on the list! Check your WhatsApp for next steps. Welcome to the movement.
+  <div class="waitlist-card">
+    <div class="waitlist-content">
+      <h2 class="waitlist-title">
+        YOU'RE <span class="gold">ONE STEP AWAY</span><br>FROM CREATING WITH INTENT.
+      </h2>
+      <p class="waitlist-sub">
+        Join creators, educators, and builders who are ready to transform the creator economy. Be among the first to experience HighSignals.
+      </p>
+      <form class="waitlist-form" id="waitlistForm" onsubmit="handleWaitlistSubmit(event)">
+        <div class="form-row">
+          <input type="text" class="wl-input" placeholder="First Name" required>
+          <input type="email" class="wl-input" placeholder="Email Address" required>
         </div>
+        <input type="text" class="wl-input" placeholder="Your Creator Focus (e.g., YouTube, TikTok)" required>
+        <button type="submit" class="wl-submit">Secure My Spot</button>
+        <p class="wl-note">We'll never spam you. Promise.</p>
+      </form>
+      <div class="success-msg" id="successMsg">
+        ✓ You're on the waitlist! Check your email for confirmation.
       </div>
     </div>
   </div>
@@ -1537,69 +1411,38 @@ footer {
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">HIGHSIGNALS</div>
-  <p class="footer-copy">© 2026 HighSignals. All rights reserved. Pre launch phase.</p>
-  <ul class="footer-links">
-    <li><a href="#">Privacy</a></li>
-    <li><a href="#">Terms</a></li>
-    <li><a href="#about-founder">About</a></li>
-    <li><a href="#waitlist">Waitlist</a></li>
-  </ul>
+  <div class="footer-logo">HighSignals</div>
+  <div class="footer-links">
+    <a href="#">Home</a>
+    <a href="#about-founder">About</a>
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
+  </div>
+  <div class="footer-copyright">© 2026 HighSignals. All rights reserved.</div>
 </footer>
 
 <script>
-// Scroll reveal
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('up'); });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-// Nav scroll
-window.addEventListener('scroll', () => {
-  const nav = document.getElementById('main-nav');
-  nav.style.background = window.scrollY > 60
-    ? 'rgba(10,25,47,0.97)'
-    : 'rgba(10,25,47,0.85)';
-});
-
-// Video player - FIXED with working YouTube embed
 function loadVideo() {
-  const wrap = document.querySelector('.video-player-wrap');
-  const videoId = 'IEvtgFKxEhY'; // Your founder video
-  wrap.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${videoId}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-}
-
-// Waitlist form handler
-function handleSubmit(e) {
-  e.preventDefault();
-  const name = document.getElementById('wlName').value;
-  const email = document.getElementById('wlEmail').value;
-  const phone = document.getElementById('wlPhone').value;
-  const interest = document.getElementById('wlInterest').value;
-
-  // Store in localStorage or just show success
-  document.getElementById('waitlistForm').style.display = 'none';
-  const msg = document.getElementById('successMsg');
-  msg.style.display = 'block';
+  const videoFrame = document.getElementById('videoFrame');
+  const videoPlaceholder = document.getElementById('videoPlaceholder');
   
-  // Optional: redirect to WhatsApp group after 2 seconds (replace with actual link)
-  setTimeout(() => {
-    // You can replace with actual WhatsApp group link
-    // window.open('https://chat.whatsapp.com/YOUR_LINK', '_blank');
-    // For now just show success, but you can enable:
-    // console.log('waitlist submitted', {name, email, phone, interest});
-  }, 1500);
+  // Replace with your actual video URL (YouTube embed, Vimeo, etc.)
+  videoFrame.src = 'https://www.youtube.com/embed/YOUR_VIDEO_ID';
+  
+  // Hide the placeholder
+  videoPlaceholder.style.display = 'none';
 }
 
-// Hamburger menu for mobile
-document.getElementById('hamburger').addEventListener('click', () => {
-  const links = document.querySelector('.nav-links');
-  if (links.style.display === 'flex') {
-    links.style.display = 'none';
-  } else {
-    links.style.cssText = 'display:flex; flex-direction:column; position:absolute; top:72px; left:0; right:0; background:rgba(10,25,47,0.98); padding:28px 28px; gap:20px; border-bottom:1px solid rgba(212,175,55,0.2); z-index:400;';
-  }
-});
+function handleWaitlistSubmit(event) {
+  event.preventDefault();
+  const form = event.target;
+  const successMsg = document.getElementById('successMsg');
+  
+  // Here you would send the form data to your backend
+  // For now, just show success message
+  form.style.display = 'none';
+  successMsg.style.display = 'block';
+}
 </script>
 </body>
 </html>

@@ -1108,7 +1108,7 @@ footer {
       <a href="https://tally.so/r/kdzByZ" class="btn-gold" style="margin-top: 8px;">Join the Movement</a>
     </div>
     <div class="video-player-wrap">
-      <iframe id="videoFrame" src="" title="Founder's Welcome Message" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe id="videoFrame" title="Founder's Welcome Message" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       <div class="video-placeholder" id="videoPlaceholder" onclick="loadVideo()">
         <div class="video-play-btn">
           <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1426,8 +1426,8 @@ function loadVideo() {
   const videoFrame = document.getElementById('videoFrame');
   const videoPlaceholder = document.getElementById('videoPlaceholder');
   
-  // Replace with your actual video URL (YouTube embed, Vimeo, etc.)
-  videoFrame.src = 'https://www.youtube.com/embed/YOUR_VIDEO_ID';
+  // YouTube video embed URL
+  videoFrame.src = 'https://www.youtube.com/embed/lEvtgFKxEhY';
   
   // Hide the placeholder
   videoPlaceholder.style.display = 'none';
